@@ -31,7 +31,7 @@ class CourseBaseMapperTests {
         LambdaQueryWrapper<CourseBase> queryWrapper = new LambdaQueryWrapper<>();
         //查询条件
         QueryCourseParamsDto queryCourseParamsDto = new QueryCourseParamsDto();
-        queryCourseParamsDto.setCourseName("java");
+        queryCourseParamsDto.setCourseName("123");
         queryCourseParamsDto.setAuditStatus("202004");
         queryCourseParamsDto.setPublishStatus("203001");
 
@@ -61,5 +61,14 @@ class CourseBaseMapperTests {
         PageResult<CourseBase> courseBasePageResult = new PageResult<>(items, total, pageParams.getPageNo(), pageParams.getPageSize());
         System.out.println(courseBasePageResult);
     }
-
+    @Test
+    void testConnection() {
+        //测试查询接口
+        LambdaQueryWrapper<CourseBase> queryWrapper = new LambdaQueryWrapper<>();
+        //查询条件
+        QueryCourseParamsDto queryCourseParamsDto = new QueryCourseParamsDto();
+        queryCourseParamsDto.setCourseName("123");
+        List<CourseBase> courseBaseList = courseBaseMapper.selectList(queryWrapper);
+        System.out.println(courseBaseList);
+    }
 }
